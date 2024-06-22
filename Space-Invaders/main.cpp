@@ -1,5 +1,6 @@
 
 
+
 #include"SFML/Graphics.hpp"
 #include"Headers/Player.hpp"
 int main()
@@ -12,6 +13,7 @@ int main()
     player.player_texture.loadFromFile("assets/textures/player_ship.png"); // Load the player ship texture
 
     player.player_sprite.setTexture(player.player_texture);  // Set the player sprite variable 
+
 
     while (window.isOpen())
     {
@@ -40,6 +42,7 @@ int main()
 
 
     }
+
 
     return 0;
 }
