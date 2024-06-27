@@ -3,9 +3,23 @@
 
 #include"SFML/Graphics.hpp"
 #include"Headers/Player.hpp"
+#include"Headers/GameService.hpp"
+
 int main()
 {
-    sf::VideoMode videoMode = sf::VideoMode(1080, 1920);
+
+    GameService service;
+
+    service.ignite();
+
+    while (service.isRunning())
+    {
+        service.update();
+        service.render();
+    }
+
+
+    sf::VideoMode videoMode = sf::VideoMode(800, 600);
     sf::RenderWindow window(videoMode, "SFML Window");
 
     Player player;
@@ -28,13 +42,13 @@ int main()
 
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            player.move();
+            player.move(-1.0f * player.getMoveSpeed());
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            player.move();
+            player.move(1.0f * player.getMoveSpeed());
 
         window.clear(sf::Color::White);
-        player.player_sprite.setposition(player.getpostion());
+        player.player_sprite.setPosition(player.getPosition());
 
         window.draw(player.player_sprite);
 
